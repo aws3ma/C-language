@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 struct Notes{
     float ds,exam;
 }note;
@@ -44,9 +44,12 @@ struct Etudiants nouveau_etudiant(){
         gets(e.prenom);
         e.n=saisie_notes();
         e.moy=calculer_moy(e.n);
+    return e;
 }
 
 void remplir(struct Etudiants e[],int n){
+        struct Etudiants e1;
+
     for (int i = 0; i < n; i++)
     {
         printf("Etudiant numero %d",i+1);
