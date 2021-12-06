@@ -48,14 +48,11 @@ struct Etudiants nouveau_etudiant(){
 }
 
 void remplir(struct Etudiants e[],int n){
-        struct Etudiants e1;
-
     for (int i = 0; i < n; i++)
     {
         printf("Etudiant numero %d",i+1);
         e[i]=nouveau_etudiant();
     }
-    
 }
 
 void affichage(struct Etudiants e[],int n){
