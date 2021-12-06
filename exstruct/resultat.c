@@ -39,11 +39,11 @@ float calculer_moy(struct Notes no){
 struct Etudiants nouveau_etudiant(){
     struct Etudiants e;
     printf("\nDonner nom : ");
-        gets(e.nom);
-        printf("Donner prenom : ");
-        gets(e.prenom);
-        e.n=saisie_notes();
-        e.moy=calculer_moy(e.n);
+    gets(e.nom);
+    printf("Donner prenom : ");
+    gets(e.prenom);
+    e.n=saisie_notes();
+    e.moy=calculer_moy(e.n);
     return e;
 }
 
