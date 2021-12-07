@@ -17,7 +17,7 @@ void remplir(char tab[],int n){
     }
 }
 void tri(char t[],int n){
-    int b=0,temp;
+    int b=-1,temp;
     for(int i=0;i<n;i++){
         if(b!=i){
             while(t[i]=='B' || t[i]=='R'){
@@ -26,11 +26,15 @@ void tri(char t[],int n){
                     temp=t[i];
                     t[i]=t[b];
                     t[b]=temp;
+                    //b++;
+                    if(b==i)
+                        break;
                 }else{
                     temp=t[i];
                     t[i]=t[n-1];
                     t[n-1]=temp;
                     n--;
+                    
                 }
             }
         }
