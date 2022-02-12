@@ -1,13 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-struct Notes{
+typedef struct Notes{
     float ds,exam;
 }note;
 
-struct Etudiants{
+typedef struct Etudiants{
     char nom[10],prenom[10];
-    struct Notes n;
+    note n;
     float moy;
 }etudiant;
 
@@ -22,7 +22,7 @@ int saisie(){
     return n;
 }
 
-struct Notes saisie_notes(){
+note saisie_notes(){
     struct Notes no;
     printf("Donner note DS : ");
     scanf("%f",&no.ds);
@@ -32,12 +32,12 @@ struct Notes saisie_notes(){
     return no;
 }
 
-float calculer_moy(struct Notes no){
+float calculer_moy(note no){
     return (no.ds+no.exam*2)/3;
 }
 
-struct Etudiants nouveau_etudiant(){
-    struct Etudiants e;
+etudiant nouveau_etudiant(){
+    etudiant e;
     printf("\nDonner nom : ");
     gets(e.nom);
     printf("Donner prenom : ");
@@ -47,7 +47,7 @@ struct Etudiants nouveau_etudiant(){
     return e;
 }
 
-void remplir(struct Etudiants e[],int n){
+void remplir(etudiant e[],int n){
     for (int i = 0; i < n; i++)
     {
         printf("Etudiant numero %d",i+1);
@@ -55,7 +55,7 @@ void remplir(struct Etudiants e[],int n){
     }
 }
 
-void affichage(struct Etudiants e[],int n){
+void affichage(etudiant e[],int n){
     int nb=0;
     for (int i = 0; i < n; i++)
     {
@@ -69,9 +69,10 @@ void affichage(struct Etudiants e[],int n){
 }
 
 void main(){
-    struct Etudiants e[30];
+    etudiant e[30];
     int n=saisie();
     remplir(e,n);
+    e[1].n.ds=1;
     affichage(e,n);
     system("pause");
 }
