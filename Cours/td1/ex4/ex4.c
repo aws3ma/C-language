@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 typedef struct{
-    int j,m,a;
+    int m,a;
 }date;
 
 typedef struct {
@@ -11,40 +11,29 @@ typedef struct {
     date d;
 }livre;
 
-int saisie(livre books[]){
-    int n;
-    printf("Nombre des livres : ");
-    scanf("%d",&n);
+void saisie(livre books[],int n){
     for (int i = 0; i < n; i++)
     {
         printf("Livre numero %d :",i+1);
         printf("Titre :");
-        scanf("%s",&books[i].titre);
+        gets(books[i].titre);
         printf("Auteur :");
-        scanf("%s",&books[i].auteur);
+        gets(books[i].auteur);
         printf("Date d'edition :");
-        printf("Jour :");
-        scanf("%s",&books[i].d.j);
         printf("Mois :");
-        scanf("%s",&books[i].d.m);
-        printf("Année :");
-        scanf("%s",&books[i].d.a);
+        scanf("%d",&books[i].d.m);
+        printf("Annee :");
+        scanf("%d",&books[i].d.a);
+        fflush(stdin);
     }
 }
 
 int nombre(char auteur[], livre books[], int n){
     int s=0;
-    int len =strlen(auteur);
     for (int i = 0; i < n; i++)
     {
-        if(strlen(books[i].auteur)==len){
-            int j;
-            for(j=0;j < len && auteur[j]==books[i].auteur[j];j++)
-            {
-                continue;
-            }
-            if(j==len)
-                s++;
+        if(strcmp(books[i].auteur,auteur)==0){
+            s++;
         }
     }
     return s;
@@ -52,25 +41,18 @@ int nombre(char auteur[], livre books[], int n){
 
 int main(int argc, char const *argv[])
 {
+    
     int n;
     char auteur[15];
     livre books[100];
-    // strcpy(books[0].auteur,"ous");
-    // strcpy(books[0].titre,"hello");
-    // books[0].d.a=2020;
-    // books[0].d.m=1;
-    // books[0].d.j=2;
-    // strcpy(books[1].auteur,"ous");
-    // strcpy(books[1].titre,"hello");
-    // books[1].d.a=2020;
-    // books[1].d.m=1;
-    // books[1].d.j=2;
-    n=saisie(books);
-    n=2;
+    printf("Nombre des livres : ");
+    scanf("%d",&n);
     fflush(stdin);
-    // strcpy(auteur,"ous");
+    saisie(books,n);
+    fflush(stdin);
+    printf("nom de l'auteur : ");
     gets(auteur);
-    printf("le nombre des livres de l'auteur %s est : %d",auteur,nombre(auteur,books,n));
+    printf("le nombre des livres de l'auteur %s est : %d \n",auteur,nombre(auteur,books,n));
     system("pause");
     return 0;
 }
