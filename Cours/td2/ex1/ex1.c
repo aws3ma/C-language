@@ -41,20 +41,36 @@ int tailleList(Cellule *c){
     return i;
 }
 void insererElement(Cellule **list,Cellule *c,int i){
+    // int len = tailleList(*list);
+    // if(i==1){
+    //     if(*list ==NULL)
+    //         *list=c; 
+    //     else{
+    //         c->svt=*list;
+    //         *list=c;
+    //     }
+    // }else{
+
+    // }
+    //cas liste non vide
     if(list !=NULL){
         int len = tailleList(*list);
+        //inserer debut
         if(i==1){
             c->svt=*list;
             *list=c;
         }else{
             Cellule *l=*list;
+            //inserer fin
             if(i==len+1){
                 while(l->svt!=NULL){
                     l=l->svt;}
                 l->svt=c;
             }
+            //rang plus grand que la taille du liste
             if(i>len+1){
                 printf("index out of range\n");}
+            //insertion dans le milieu
             if(i<len){
             for (int j = 2; j < i; j++)
             {
@@ -64,7 +80,9 @@ void insererElement(Cellule **list,Cellule *c,int i){
             l->svt=c;
             }
         }
-        
+    //cas liste est vide
+    }else{
+        *list=c;
     }
 }
 void supprimerElement(Cellule **list,int i){
