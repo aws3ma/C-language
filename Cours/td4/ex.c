@@ -30,7 +30,6 @@ void insert(int x, Node **head)
         }
     }
 }
-
 int taille(Node *head)
 {
     if (head == NULL)
@@ -66,17 +65,14 @@ int hauteur(Node *head){
             return 1+rs;
     }
 }
-void supprimer(int x,Node **head,Node *prec){
-    if(head != NULL){
-        if((*head)->key==x && prec==NULL){
-            *head=(*head)->right;
-        }
-        if((*head)->key<x){
-            supprimer(x,&(*head)->right);
-        }else if((*head)->key>x){
-            supprimer(x,&(*head)->left);
-        }
-    }
+void supprimer(struct noeud** tree)
+{
+    struct noeud* tmpTree = *tree;
+    if (!tree) return;
+    if (tmpTree->gauche) SuppTree(&tmpTree->gauche);
+    if (tmpTree->droite) SuppTree(&tmpTree->droite);
+    free(tmpTree);
+    *tree = NULL;
 }
 void afficher(Node *head)
 {
