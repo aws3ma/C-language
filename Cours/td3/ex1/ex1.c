@@ -8,9 +8,8 @@ void copier(Pile **p1, Pile **p2){
     while(!empty(*p1)){
         if(last(*p1)%2==0){
             push(last(*p1),p2);
-        }else{
-            push(last(*p1),&temp);
         }
+        push(last(*p1),&temp);
         pop(p1);
         
     }

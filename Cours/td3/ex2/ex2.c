@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "pile.c"
 
-void diviser(Etudiant *E1, Etudiant **E2, Etudiant **E3)
+void eclater(Etudiant *E1, Etudiant **E2, Etudiant **E3)
 {
     while (!empty(E1))
     {
@@ -71,7 +71,7 @@ int main(int argc, char const *argv[])
     push(2, 7, &E1);
     push(3, 13, &E1);
     push(4, 9, &E1);
-    diviser(E1, &E2, &E3);
+    eclater(E1, &E2, &E3);
     printf("admis");
     while (!empty(E2))
     {
